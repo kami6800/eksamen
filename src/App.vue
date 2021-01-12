@@ -1,5 +1,5 @@
   <template>
-  <div class="w-full bg-white p-6">
+  <div class="w-full bg-white p-6 h-full overflow-auto border">
     <router-view></router-view>
   </div>
 </template>
@@ -14,5 +14,7 @@ export default {
 </script>
 
 <style>
-
+  .aaa{
+    height:80vh;
+  }
 </style>

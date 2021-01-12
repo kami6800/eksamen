@@ -1,4 +1,5 @@
 <template>
+<div class="h-full aaa">
     <base-header class="justify-between text-center text-gray-600">
         <h2>Brewista</h2>
         <svg class="h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -8,7 +9,11 @@
     <p class="text-gray-400 font-medium text-lg">Latest brews</p>
     <coffee-card></coffee-card>
     <coffee-card></coffee-card>
+     <coffee-card></coffee-card>
+      <coffee-card></coffee-card>
 
-    <router-link class="bg-yellow-200 py-4 text-xl rounded-full m-0 m-auto block w-48 text-center" to="/beans">BREW A CUP</router-link>
-
+</div>
+    <div class="absolute w-full left-0 rigth-0 bottom-5">
+        <router-link class="bg-yellow-200 py-4 text-xl rounded-full m-0 m-auto block w-48 text-center" to="/beans">BREW A CUP</router-link>
+    </div>
 </template>
