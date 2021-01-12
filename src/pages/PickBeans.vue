@@ -6,7 +6,7 @@
             </svg>
     </router-link>
             <h2>Pick your coffee</h2>
-        </base-header>
+    </base-header>
 
         <bean-card></bean-card>
         <bean-card></bean-card>

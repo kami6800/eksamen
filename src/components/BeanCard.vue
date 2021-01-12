@@ -1,5 +1,5 @@
 <template>
-    <base-card>
+    <base-card @click="selectBeans">
         <h3 class="font-bold text-3xl">Calahute alto</h3>
         <h4 class="text-gray-600 text-sm">Nordhavn coffee</h4>
         <p class="my-8 text-gray-600">lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
@@ -23,3 +23,13 @@
         </div>
     </base-card>
 </template>
+
+<script>
+export default {
+    methods:{
+        selectBeans(){
+            this.$router.push("/brew");
+        }
+    }
+}
+</script>
