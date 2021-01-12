@@ -9,4 +9,6 @@
     <coffee-card></coffee-card>
     <coffee-card></coffee-card>
 
+    <router-link class="bg-yellow-200 py-4 text-xl rounded-full m-0 m-auto block w-48 text-center" to="/pick">BREW A CUP</router-link>
+
 </template>
