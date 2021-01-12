@@ -1,5 +1,5 @@
 <template>
-  <base-card>
+  <base-card class="flex">
     <svg class="w-24 h-24">
       <use xlink:href="#infusion" />
     </svg>
