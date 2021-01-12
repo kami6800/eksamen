@@ -8,17 +8,17 @@
             <h2>Pick your coffee</h2>
         </base-header>
 
-        <recipe-card></recipe-card>
-        <recipe-card></recipe-card>
-        <recipe-card></recipe-card>
-        <recipe-card></recipe-card>
+        <bean-card></bean-card>
+        <bean-card></bean-card>
+        <bean-card></bean-card>
+        <bean-card></bean-card>
 </template>
 
 <script>
-import RecipeCard from "../components/RecipeCard";
+import BeanCard from "../components/BeanCard";
 export default {
     components:{
-        RecipeCard
+        BeanCard
     }
 }
 </script>
