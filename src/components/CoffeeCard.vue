@@ -1,5 +1,5 @@
 <template>
-  <div class="border my-4 p-4 flex">
+  <base-card>
     <svg class="w-24 h-24">
       <use xlink:href="#infusion" />
     </svg>
@@ -35,5 +35,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </base-card>
 </template>
