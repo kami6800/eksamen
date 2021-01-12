@@ -8,12 +8,22 @@
             <h2>How do you want to brew</h2>
     </base-header>
     <p class="text-gray-400 font-medium text-lg">Latest brews</p>
-    <coffee-card class="mb-16"></coffee-card>
+    <coffee-card @click="selectBrew" class="mb-16"></coffee-card>
 
     <p class="text-gray-400 font-medium text-lg">Latest brews</p>
-    <coffee-card></coffee-card>
-    <coffee-card></coffee-card>
-    <coffee-card></coffee-card>
-    <coffee-card></coffee-card>
+    <coffee-card @click="selectBrew"></coffee-card>
+    <coffee-card @click="selectBrew"></coffee-card>
+    <coffee-card @click="selectBrew"></coffee-card>
+    <coffee-card @click="selectBrew"></coffee-card>
     
 </template>
+
+<script>
+export default {
+    methods:{
+        selectBrew(){
+            this.$router.push("/recipe");
+        }
+    }
+}
+</script>
