@@ -13,6 +13,7 @@ const store = createStore({
         },
         selectRecipe(state, payload){
             state.selectedRecipe = payload;
+            console.log(payload);
         }
     },
     actions:{
@@ -24,10 +25,8 @@ const store = createStore({
         }
     },
     getters:{
-        brewCoffee(state){
-            const coffee = state.selectedRecipe;
-            coffee.company = state.selectedBeans;
-            return coffee;
+        getSelectedRecipe(state){
+            return state.selectedRecipe;
         }
     }
 });

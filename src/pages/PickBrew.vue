@@ -50,7 +50,6 @@ export default {
         selectBrew(coffee){
             this.$store.dispatch("selectRecipe", coffee);
             this.$router.push("/recipe");
-            console.log(this.$store.getters.brewCoffee.name);
         }
     }
 }
