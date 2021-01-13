@@ -15,9 +15,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .aaa{
-    height:80vh;
-  }
-</style>

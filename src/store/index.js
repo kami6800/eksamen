@@ -11,14 +11,14 @@ const store = createStore({
     mutations:{
         load(state){
             //state.latestBrews = JSON.parse(localStorage.getItem("brews")) ?? [];
-            fetch("https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/brews.son")
+            fetch("https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/brews.json")
             .then(function(response){
                 if(response.ok)
                     return response.json();
-                    else throw new Error("bad response");
+                else
+                    throw new Error("bad response");
             })
             .then(function(data){
-                console.log("hm");
                 state.latestBrews = data;
             })
             .catch(function(error){
