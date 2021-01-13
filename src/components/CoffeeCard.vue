@@ -1,7 +1,7 @@
 <template>
   <base-card @click="clickCoffee" class="flex">
     <svg class="w-24 h-24">
-      <use xlink:href="#infusion" />
+      <use v-bind:href="`#${type}`" />
     </svg>
     <div class="w-full mx-4 flex flex-col justify-between">
       <div>
@@ -20,7 +20,7 @@
 <script>
 export default {
   emits:["clickCoffee"],
-  props:["name", "company", "beans", "water", "grind", "time"],
+  props:["name", "type", "company", "beans", "water", "grind", "time"],
   data(){
     return{
 
@@ -30,6 +30,7 @@ export default {
     clickCoffee(){
       this.$emit("clickCoffee", {
         name:this.name,
+        type:this.type,
         beans:this.beans,
         water:this.water,
         grind:this.grind,

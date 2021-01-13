@@ -3,7 +3,7 @@ import { createStore } from "vuex";
 const store = createStore({
     state(){
         return{
-            selectedBeans:"",
+            selectedBeans:{},
             selectedRecipe:{},
             latestBrews:[]
         }
@@ -18,8 +18,9 @@ const store = createStore({
         },
         brewCoffee(state){
             const coffee=state.selectedRecipe;
-            coffee.company=state.selectedBeans;
-            coffee.id = coffee.name + coffee.company;
+            coffee.name=state.selectedBeans.name
+            coffee.company=state.selectedBeans.company;
+            coffee.id = coffee.name + coffee.company + coffee.type;
             console.log(coffee);
             state.latestBrews.unshift(coffee);
         }

@@ -9,13 +9,23 @@
     </base-header>
     <p class="text-gray-400 font-medium text-lg">Latest brews</p>
     <coffee-card @clickCoffee="selectBrew" class="mb-16"
-    v-bind="favoriteRecipe"></coffee-card>
+    :name="favoriteRecipe.name"
+    :type="favoriteRecipe.type"
+    :beans="favoriteRecipe.beans"
+    :water="favoriteRecipe.water"
+    :grind="favoriteRecipe.grind"
+    :time="favoriteRecipe.time"></coffee-card>
 
     <p class="text-gray-400 font-medium text-lg">Latest brews</p>
     <coffee-card @clickCoffee="selectBrew"
     v-for="recipe in allRecipes"
     :key="recipe.name"
-    v-bind="recipe"></coffee-card>
+    :name="recipe.name"
+    :type="recipe.type"
+    :beans="recipe.beans"
+    :water="recipe.water"
+    :grind="recipe.grind"
+    :time="recipe.time"></coffee-card>
     
 </template>
 
@@ -25,6 +35,7 @@ export default {
         return{
             favoriteRecipe:{
                 name:"AeroPress",
+                type:"aeropress",
                 beans:"16g",
                 water:"230ml",
                 grind:"Medium",
@@ -32,6 +43,7 @@ export default {
             },
             allRecipes:[{
                 name:"French Press",
+                type:"french",
                 beans:"33g",
                 water:"500ml",
                 grind:"Coarse",
@@ -39,6 +51,7 @@ export default {
             },
             {
                 name:"AeroPress",
+                type:"aeropress",
                 beans:"16g",
                 water:"230ml",
                 grind:"Medium",
