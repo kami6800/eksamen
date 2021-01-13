@@ -11,6 +11,16 @@ const store = createStore({
         }
     },
     mutations:{
+        signup(_state, payload){
+            console.log(payload.username, payload.password);
+            fetch(`https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/${payload.username}/password.json`, {
+                method: "PUT",
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload.password)
+            });
+        },
         login(state, payload){
             state.username = payload.username;
             state.isAuthorized = true;
@@ -79,6 +89,9 @@ const store = createStore({
         }
     },
     actions:{
+        signup(context, payload){
+            context.commit("signup", payload)
+        },
         login(context, payload){
             context.commit("login", payload);
         },

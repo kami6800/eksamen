@@ -9,7 +9,7 @@
         <input class="block border" v-model="password">
         <button @click="login" class="my-8 bg-yellow-200 p-2 px-4 rounded transition-all duration-150
                    hover:bg-yellow-100 hover:text-gray-400 hover:shadow-md">Login</button>
-        <p>No account? <router-link class="text-yellow-600 font-semibold hover:text-yellow-400" to="/latest">Sign up</router-link></p>
+        <p>No account? <router-link @click.prevent="signup" class="text-yellow-600 font-semibold hover:text-yellow-400" to="/latest">Sign up</router-link></p>
      </div>
 </template>
 
@@ -25,6 +25,9 @@ export default {
         login(){
             this.$store.dispatch("login", {username:this.username, password:this.password});
             this.$router.push("/latest");
+        },
+        signup(){
+            this.$store.dispatch("signup", {username:this.username, password:this.password});
         }
     }
 }
