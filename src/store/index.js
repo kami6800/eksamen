@@ -23,9 +23,16 @@ const store = createStore({
             console.log(payload);
         },
         brewCoffee(state){
-            const coffee=state.selectedRecipe;
-            coffee.name=state.selectedBeans.name
-            coffee.company=state.selectedBeans.company;
+            const beans = state.selectedBeans;
+            const recipe = state.selectedRecipe;
+            console.log(beans, recipe);
+            if(!beans || !recipe){
+                alert("Something went wrong");
+                return;
+            }
+            const coffee=recipe;
+            coffee.name=beans.name
+            coffee.company=beans.company;
             coffee.id = coffee.name + coffee.company + coffee.type;
             console.log(coffee);
             state.latestBrews.unshift(coffee);
