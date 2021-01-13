@@ -10,10 +10,31 @@ const store = createStore({
     },
     mutations:{
         load(state){
-            state.latestBrews = JSON.parse(localStorage.getItem("brews")) ?? [];
+            //state.latestBrews = JSON.parse(localStorage.getItem("brews")) ?? [];
+            fetch("https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/brews.son")
+            .then(function(response){
+                if(response.ok)
+                    return response.json();
+                    else throw new Error("bad response");
+            })
+            .then(function(data){
+                console.log("hm");
+                state.latestBrews = data;
+            })
+            .catch(function(error){
+                console.log(error.message)
+                state.latestBrews = JSON.parse(localStorage.getItem("brews")) ?? [];
+            });
         },
         save(state){
             localStorage.setItem("brews", JSON.stringify(state.latestBrews));
+            fetch("https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/brews.json", {
+                method: "PUT",
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(state.latestBrews)
+            });
         },
         selectBeans(state, payload){
             state.selectedBeans = payload;

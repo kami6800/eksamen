@@ -22,8 +22,13 @@
 export default {
     data(){
         return{
-            latestBrews: this.$store.getters.getLatestBrews
+            //latestBrews: this.$store.getters.getLatestBrews
         };
+    },
+    computed:{
+        latestBrews(){
+            return this.$store.getters.getLatestBrews;
+        }
     }
 }
 </script>
