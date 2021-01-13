@@ -8,22 +8,49 @@
             <h2>How do you want to brew</h2>
     </base-header>
     <p class="text-gray-400 font-medium text-lg">Latest brews</p>
-    <coffee-card @click="selectBrew" class="mb-16"></coffee-card>
+    <coffee-card @clickCoffee="selectBrew" class="mb-16"
+    v-bind="favoriteRecipe"></coffee-card>
 
     <p class="text-gray-400 font-medium text-lg">Latest brews</p>
-    <coffee-card @click="selectBrew"></coffee-card>
-    <coffee-card @click="selectBrew"></coffee-card>
-    <coffee-card @click="selectBrew"></coffee-card>
-    <coffee-card @click="selectBrew"></coffee-card>
+    <coffee-card @clickCoffee="selectBrew"
+    v-for="recipe in allRecipes"
+    :key="recipe.name"
+    v-bind="recipe"></coffee-card>
     
 </template>
 
 <script>
 export default {
+    data(){
+        return{
+            favoriteRecipe:{
+                name:"AeroPress",
+                beans:"16g",
+                water:"230ml",
+                grind:"Medium",
+                time:"1min"
+            },
+            allRecipes:[{
+                name:"French Press",
+                beans:"33g",
+                water:"500ml",
+                grind:"Coarse",
+                time:"4min"
+            },
+            {
+                name:"AeroPress",
+                beans:"16g",
+                water:"230ml",
+                grind:"Medium",
+                time:"1min"
+            }]
+        };
+    },
     methods:{
-        selectBrew(){
+        selectBrew(coffee){
+            this.$store.dispatch("selectRecipe", coffee);
             this.$router.push("/recipe");
-            console.log(this.$store.getters.gettest);
+            console.log(this.$store.getters.brewCoffee.name);
         }
     }
 }

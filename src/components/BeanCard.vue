@@ -29,6 +29,7 @@ export default {
     props:["name", "company", "description", "process", "roast", "varieties", "country"],
     methods:{
         selectBeans(){
+            this.$store.dispatch("selectBeans", this.company);
             this.$router.push("/brew");
         }
     }
