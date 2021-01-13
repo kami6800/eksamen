@@ -22,9 +22,32 @@ const store = createStore({
             });
         },
         login(state, payload){
-            state.username = payload.username;
-            state.isAuthorized = true;
-            this.commit("load");
+            let password = "";
+            fetch(`https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/${payload.username}/password.json`)
+            .then(function(response){
+                if(response.ok)
+                    return response.json();
+                else
+                    throw new Error("user not found");
+            })
+            .then(function(data){
+                password = data;
+
+                if(password){
+                    state.username = payload.username;
+                    state.isAuthorized = true;
+                    this.commit("load");
+                }
+                else{
+                    state.username = "";
+                    state.isAuthorized = false;
+                }
+            })
+            .catch(function(error){
+                console.log(error.message)
+            });
+
+            
         },
         logout(state){
             state.username = "";
@@ -117,6 +140,35 @@ const store = createStore({
         },
         getLatestBrews(state){
             return state.latestBrews;
+        },
+        isAuth(state){
+            return state.isAuthorized;
+        },
+        getValidUser(){
+            return function(payload){
+                let password="";
+                fetch(`https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/${payload.username}/password.json`)
+                .then(function(response){
+                    if(response.ok)
+                        return response.json();
+                    else
+                        throw new Error("user not found");
+                })
+                .then(function(data){
+                    password = data;
+
+                    if(password){
+                        return true;
+                    }
+                    else{
+                    return false;
+                    }
+                })
+                .catch(function(error){
+                    console.log(error.message)
+                    return false;
+                });
+            }
         }
     }
 });
