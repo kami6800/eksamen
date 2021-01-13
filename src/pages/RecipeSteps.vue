@@ -17,6 +17,12 @@
     <recipe-step v-for="step in steps"
     :key="step.numer"
     v-bind="step"></recipe-step>
+    <button @click="finalizeBrew" class="flex float-right">
+        <p class="text-xl font-black mr-4">FINISH</p>
+        <svg class="w-8 h-8 mr-6">
+            <use xlink:href="#arrowForward" />
+        </svg>
+    </button>
 </template>
 
 <script>
@@ -55,10 +61,10 @@ export default {
             ]
         };
     },
-    computed:{
-        getRecipe(){
-            console.log(this.$store.getters.getSelectedRecipe);
-            return "hi";
+    methods:{
+        finalizeBrew(){
+            this.$store.dispatch("brewCoffee");
+            this.$router.push("/latest");
         }
     }
 }

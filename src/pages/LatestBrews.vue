@@ -7,13 +7,22 @@
         </svg>
     </base-header>
     <p class="text-gray-400 font-medium text-lg">Latest brews</p>
-    <coffee-card></coffee-card>
-    <coffee-card></coffee-card>
-     <coffee-card></coffee-card>
-      <coffee-card></coffee-card>
+    <coffee-card v-for="brew in latestBrews"
+    :key="brew.id"
+    v-bind="brew"></coffee-card>
 
 </div>
     <div class="absolute w-full left-0 rigth-0 bottom-5">
         <router-link class="bg-yellow-200 py-4 text-xl rounded-full m-0 m-auto block w-48 text-center" to="/beans">BREW A CUP</router-link>
     </div>
 </template>
+
+<script>
+export default {
+    data(){
+        return{
+            latestBrews: this.$store.getters.getLatestBrews
+        };
+    }
+}
+</script>

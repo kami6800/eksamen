@@ -4,7 +4,8 @@ const store = createStore({
     state(){
         return{
             selectedBeans:"",
-            selectedRecipe:{}
+            selectedRecipe:{},
+            latestBrews:[]
         }
     },
     mutations:{
@@ -14,6 +15,13 @@ const store = createStore({
         selectRecipe(state, payload){
             state.selectedRecipe = payload;
             console.log(payload);
+        },
+        brewCoffee(state){
+            const coffee=state.selectedRecipe;
+            coffee.company=state.selectedBeans;
+            coffee.id = coffee.name + coffee.company;
+            console.log(coffee);
+            state.latestBrews.unshift(coffee);
         }
     },
     actions:{
@@ -22,11 +30,17 @@ const store = createStore({
         },
         selectRecipe(context, payload){
             context.commit("selectRecipe", payload);
+        },
+        brewCoffee(context){
+            context.commit("brewCoffee");
         }
     },
     getters:{
         getSelectedRecipe(state){
             return state.selectedRecipe;
+        },
+        getLatestBrews(state){
+            return state.latestBrews;
         }
     }
 });
