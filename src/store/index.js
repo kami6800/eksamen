@@ -23,6 +23,7 @@ const store = createStore({
         },
         login(state, payload){
             let password = "";
+            const that = this;
             fetch(`https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/${payload.username}/password.json`)
             .then(function(response){
                 if(response.ok)
@@ -33,10 +34,11 @@ const store = createStore({
             .then(function(data){
                 password = data;
 
-                if(password){
+                if(password && password == payload.password){
+                    console.log("OKKK");
                     state.username = payload.username;
                     state.isAuthorized = true;
-                    this.commit("load");
+                    that.commit("load");
                 }
                 else{
                     state.username = "";
@@ -54,6 +56,7 @@ const store = createStore({
             state.isAuthorized = false;
         },
         load(state){
+            console.log("loading");
             //state.latestBrews = JSON.parse(localStorage.getItem("brews")) ?? [];
             fetch(`https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/${state.username}/brews.json`)
             .then(function(response){
