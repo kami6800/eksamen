@@ -23,6 +23,7 @@ export default {
     methods:{
         selectBrew(){
             this.$router.push("/recipe");
+            console.log(this.$store.getters.gettest);
         }
     }
 }
