@@ -3,15 +3,26 @@ import { createStore } from "vuex";
 const store = createStore({
     state(){
         return{
+            username:"",
+            isAuthorized:false,
             selectedBeans:{},
             selectedRecipe:{},
             latestBrews:[]
         }
     },
     mutations:{
+        login(state, payload){
+            state.username = payload.username;
+            state.isAuthorized = true;
+            this.commit("load");
+        },
+        logout(state){
+            state.username = "";
+            state.isAuthorized = false;
+        },
         load(state){
             //state.latestBrews = JSON.parse(localStorage.getItem("brews")) ?? [];
-            fetch("https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/brews.json")
+            fetch(`https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/${state.username}/brews.json`)
             .then(function(response){
                 if(response.ok)
                     return response.json();
@@ -19,7 +30,7 @@ const store = createStore({
                     throw new Error("bad response");
             })
             .then(function(data){
-                state.latestBrews = data;
+                state.latestBrews = data ?? [];
             })
             .catch(function(error){
                 console.log(error.message)
@@ -28,7 +39,7 @@ const store = createStore({
         },
         save(state){
             localStorage.setItem("brews", JSON.stringify(state.latestBrews));
-            fetch("https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/brews.json", {
+            fetch(`https://coffee-7411d-default-rtdb.europe-west1.firebasedatabase.app/${state.username}/brews.json`, {
                 method: "PUT",
                 headers:{
                     "Content-Type": "application/json"
@@ -68,6 +79,12 @@ const store = createStore({
         }
     },
     actions:{
+        login(context, payload){
+            context.commit("login", payload);
+        },
+        logout(context){
+            context.commit("logout");
+        },
         load(context){
             context.commit("load");
         },

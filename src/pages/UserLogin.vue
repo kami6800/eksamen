@@ -23,7 +23,7 @@ export default {
     },
     methods:{
         login(){
-            console.log(this.username, this.password);
+            this.$store.dispatch("login", {username:this.username, password:this.password});
             this.$router.push("/latest");
         }
     }
