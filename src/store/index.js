@@ -9,6 +9,12 @@ const store = createStore({
         }
     },
     mutations:{
+        load(state){
+            state.latestBrews = JSON.parse(localStorage.getItem("brews")) ?? [];
+        },
+        save(state){
+            localStorage.setItem("brews", JSON.stringify(state.latestBrews));
+        },
         selectBeans(state, payload){
             state.selectedBeans = payload;
         },
@@ -23,9 +29,14 @@ const store = createStore({
             coffee.id = coffee.name + coffee.company + coffee.type;
             console.log(coffee);
             state.latestBrews.unshift(coffee);
+
+            this.commit("save")
         }
     },
     actions:{
+        load(context){
+            context.commit("load");
+        },
         selectBeans(context, payload){
             context.commit("selectBeans", payload);
         },
