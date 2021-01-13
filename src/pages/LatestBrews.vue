@@ -7,7 +7,7 @@
         </svg>
     </base-header>
     <p class="text-gray-400 font-medium text-lg">Latest brews</p>
-    <coffee-card v-for="brew in latestBrews"
+    <coffee-card class="cursor-default" v-for="brew in latestBrews"
     :key="brew.id"
     v-bind="brew"></coffee-card>
 

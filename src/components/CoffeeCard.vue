@@ -1,5 +1,6 @@
 <template>
-  <base-card @click="clickCoffee" class="flex">
+<router-link @click.prevent="clickCoffee" to="/latest">
+  <base-card class="flex">
     <svg class="w-24 h-24">
       <use v-bind:href="`#${type}`" />
     </svg>
@@ -15,6 +16,7 @@
     :time="time"></recipe-widget>
     </div>
   </base-card>
+</router-link>
 </template>
 
 <script>

@@ -14,7 +14,8 @@
         </div>
     </div>
     <div class="fixed w-full left-0 rigth-0 bottom-3 text-center">
-        <router-link class="bg-yellow-200 p-4 rounded-full m-0 m-auto block h-24 w-24 border-8 border-white" to="/beans">
+        <router-link class="bg-yellow-200 p-4 rounded-full m-0 m-auto block h-24 w-24 border-8 border-white transition duration-200
+                            hover:bg-yellow-100 hover:text-gray-400" to="/beans">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>

@@ -1,5 +1,6 @@
 <template>
-    <base-card @click="selectBeans">
+    <router-link @click.prevent="selectBeans" to="/latest">
+    <base-card>
         <h3 class="font-bold text-3xl uppercase">{{name}}</h3>
         <h4 class="text-gray-600 text-sm">{{company}}</h4>
         <p class="my-8 text-gray-600">{{description}}</p>
@@ -22,6 +23,7 @@
             </div>
         </div>
     </base-card>
+    </router-link>
 </template>
 
 <script>
